@@ -13,9 +13,20 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   getUsers() {
+
     return this.http.get(`${this.url}/users?page=2`)
       .pipe(
-        map(resp => resp['data'])
+        map(resp =>
+          resp['data'])
+      );
+  }
+
+  getUserByID(id: string) {
+
+    return this.http.get(`${this.url}/users/${id}`)
+      .pipe(
+        map(resp =>
+          resp['data'])
       );
   }
 }
